@@ -17,7 +17,7 @@ We want to document how to start a Pod on OCP as an unprivileged user and, lever
 We want to run the Pod as the unprivileged `user1` with annotations `io.kubernetes.cri-o.userns-mode: "auto"` and `io.openshift.builder: "true"` to instruct CRI-O to enable userns:
 
 ```bash
-oc --as user1 create -f - << EOF
+oc --as htpasswd:user1 create -f - << EOF
 apiVersion: v1
 kind: Pod
 metadata:
@@ -68,3 +68,4 @@ kubectl exec -ti buildah-userns -- cd /projects/tilt-example-java/201-quarkus-li
 - [Improving Kubernetes and container security with user namespaces | Kinvolk](https://kinvolk.io/blog/2020/12/improving-kubernetes-and-container-security-with-user-namespaces/)
 - [127: Add KEP for user namespaces support by rata · Pull Request #3065 · kubernetes/enhancements](https://github.com/kubernetes/enhancements/pull/3065)
 - [containers/bubblewrap: Unprivileged sandboxing tool](https://github.com/containers/bubblewrap)
+
